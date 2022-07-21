@@ -3,6 +3,7 @@
 
 .env
 
+build
 
 # Ignore the node_modules
 node_modules

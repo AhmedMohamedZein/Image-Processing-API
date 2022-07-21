@@ -9,7 +9,7 @@
     "build": "npx tsc",
     "server": "nodemon src/server.ts",
     "prettier": "prettier --config ./.prettierrc --write ./src/**.ts",
-    "lint": "eslint ./"
+    "lint": "eslint ./src/"
   },
   "author": "AhmedZein",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "jasmine": "^4.2.1",
     "jasmine-spec-reporter": "^7.0.0",
     "prettier": "^2.7.1",
+    "sharp": "^0.30.7",
     "supertest": "^6.2.4"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "@types/jasmine": "^4.0.3",
     "@types/node": "^18.0.6",
     "@types/prettier": "^2.6.3",
+    "@types/sharp": "^0.30.4",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
