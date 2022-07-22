@@ -28,7 +28,7 @@ export default async function isExist (req : express.Request , res : express.Res
             // here we go to the next() middleware to create the image
             res.status (400).send('bad Request').end();
         }else {
-            res.status(201).sendFile( `${requiredImage}` ,{ root : absolutePath } ) ;
+            res.status(200).sendFile( `${requiredImage}` ,{ root : absolutePath } ) ;
         }
     } catch (error) {
         res.status (500).end();

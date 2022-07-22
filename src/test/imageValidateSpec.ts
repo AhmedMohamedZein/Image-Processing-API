@@ -22,7 +22,6 @@ describe('these tests are focused at the validate middleware a failure tests at 
         WidthAndHeightWrong : '?width=aasd&height=qwe',
         WidthAndHeightCorrect : '?width=407&height=365',
         nameAndWidthAndHeightWrong : '?name=ahmedzein&width=aasd&height=qwe',
-        AllCorrect : '?name=smtp1&width=407&height=qwe'
     };
     
     it( '1.1 Query values is null or NaN or undefined ' , async () => {
@@ -83,3 +82,16 @@ describe('these tests are focused at the validate middleware a failure tests at 
     });
 
 });
+
+describe('these tests are focused at the isExits middleware only a success tests at /api/image' , ()=>{
+
+    const queriesSchema = {  AllCorrect : '?name=smtp1&width=407&height=365' };
+
+    it( '1.1 All query values are Correct Equal 200' , async () => {
+        const responseObject = await response.get (`/api/image${queriesSchema.AllCorrect}`);
+        expect( responseObject.status ).toEqual (200);
+    });
+
+
+
+})
