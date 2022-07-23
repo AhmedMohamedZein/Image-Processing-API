@@ -24,7 +24,7 @@ export default async function (req : express.Request , res : express.Response , 
             await sharp (`${absolutePath}\\${requiredImage}`).resize(res.locals.width,res.locals.height,{
                 fit : 'inside'
                 }).toFile(`${thumbPath}\\${requiredImage}`);
-            res.status(200).sendFile(`${requiredImage}` , { root : thumbPath })    
+            res.status(201).sendFile(`${requiredImage}` , { root : thumbPath })    
         }
     }catch (error) {
         console.log (error);
