@@ -12,21 +12,19 @@ export default async function isExist (req : express.Request , res : express.Res
     // else created it form the full folder and chach it in the thumb folder
     const absolutePath = "C:\\Users\\AhmedZein\\Desktop\\FWD Advanced\\thumb\\" ;
     try {
-        const arrayOfExistsImagesCached = await fsPromises.readdir('./thumb');
-        let requiredImage : ( string | undefined ) ;   
+        const arrayOfExistsImagesCached = await fsPromises.readdir('./thumb');  
+        let requiredImage : (string | undefined );   
         for (let i = 0 ; i <= arrayOfExistsImagesCached.length - 1  ; i++){
-            const nameOfTheImage = arrayOfExistsImagesCached[i].split("").slice(0 , arrayOfExistsImagesCached.length - 5).join("") ;
-            if ( nameOfTheImage !== res.locals.name ) continue;
-            const imageHeight =  (await sharp (`${absolutePath}\\${arrayOfExistsImagesCached[i]}`).metadata()).height;
-            const imageWidth =  (await sharp (`${absolutePath}\\${arrayOfExistsImagesCached[i]}`).metadata()).width;
-            if ( imageHeight !== res.locals.height) continue;
-            if ( imageWidth !== res.locals.width) continue;
-
+            const nameOfTheImage = arrayOfExistsImagesCached[i].slice(0,-4)  ;
+            if ( nameOfTheImage != res.locals.name ) continue;
+            const imageWidthHeight =  await sharp (`${absolutePath}\\${arrayOfExistsImagesCached[i]}`).metadata();
+            if ( imageWidthHeight.height != res.locals.height) continue;
+            if ( imageWidthHeight.width != res.locals.width) continue;
             requiredImage = arrayOfExistsImagesCached[i] ;
         }
         if ( !requiredImage ) {
             // here we go to the next() middleware to create the image
-            res.status (400).send('bad Request').end();
+            next();
         }else {
             res.status(200).sendFile( `${requiredImage}` ,{ root : absolutePath } ) ;
         }

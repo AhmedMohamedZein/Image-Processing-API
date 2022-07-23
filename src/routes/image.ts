@@ -13,7 +13,7 @@ route.get ( '/' , validate, isExist , createImage ,(req,res)=>{
    // if the request is validate 'next()'
    // check the chashed folder for existing photo
 
-  res.status (500).send('bad coding').end();
+  res.status (500).end();
 });
 
 
