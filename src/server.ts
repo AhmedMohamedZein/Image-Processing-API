@@ -10,7 +10,7 @@ const server = express();
 
 server.use ('/api/image' , imageApi );
 
-server.get('/' , (req , res)=>{
+server.get('/' , (req : express.Request , res : express.Response )=>{
 
     res.status(200).send("The root of this server nothing will be returned")
 
