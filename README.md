@@ -15,6 +15,10 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
   3. `npm run server` :   
 
          will run the server using nodemon at port 8000 unless you have a .env file 
+  
+  4. `node build/server.js` :
+  
+         will run the production files
          
 ## Api documentation
 
