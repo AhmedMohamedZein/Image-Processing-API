@@ -33,4 +33,12 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
                  1. name is a string value 
                  2. width is a intger value
                  3. height is a intger value 
+                 
+         example : 
+         
+             http://localhost:8000/api/image?name=encenadaport&width=407&height=365
+             
+                > encenadaport : is a image name from the full folder 
+                > @return : should be a status 200 with the image of width 407 and height of 365
+              
 
