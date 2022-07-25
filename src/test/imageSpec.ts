@@ -1,7 +1,7 @@
 import server  from '../server';
 import supertest from 'supertest';
-import { promises as fsPromises } from 'fs';
-import { count } from 'console';
+//import validate from '../middlewares/api.image.Middleware/validate';
+
 
 const response = supertest ( server ) ;
 
@@ -87,7 +87,7 @@ describe('these tests are focused at the createImage middleware at /api/image?' 
 
     it( '1.1 All query values are Correct status code Equal to 200' , async () => {
         const responseObject = await response.get (`/api/image${queriesSchema.AllCorrect}`);
-        expect( responseObject.status ).toEqual (201);
+        expect( responseObject.status ).toEqual (200);
     });
     it( '1.2 All query values are Wrong Equal 404 resource was not found' , async () => {
         const responseObject = await response.get (`/api/image${queriesSchema.nameAndWidthAndHeightWrong}`);

@@ -12,7 +12,7 @@ export default async function isExist (req : express.Request , res : express.Res
     // else created it form the full folder and chach it in the thumb folder
     const thumbLocation = path.join (__dirname ,'../../../thumb/' ) ;
     try {
-        const arrayOfExistsImagesCached = await fsPromises.readdir('./thumb');  
+        const arrayOfExistsImagesCached = await fsPromises.readdir(thumbLocation);  
         let requiredImage : (string | undefined );   
         for (let i = 0 ; i <= arrayOfExistsImagesCached.length - 1  ; i++){
             // nameOfTheImage is the image name without the extension '.png' ..etc
@@ -27,13 +27,14 @@ export default async function isExist (req : express.Request , res : express.Res
         }
         if ( !requiredImage ) {
             // here we go to the next() middleware to create the image
+            console.log ( requiredImage + "  it does not went else  ") ;
             next();
         }else {
             res.status(200).sendFile( `${requiredImage}` ,{ root : thumbLocation } ) ;
             return;
         }
     } catch (error) {
-        res.status (500).end();
+        res.status (500).send('server error').end();
         return;
     }
 }

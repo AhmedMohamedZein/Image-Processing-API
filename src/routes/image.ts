@@ -12,8 +12,6 @@ route.get ( '/' , validate, isExist , createImage ,(req,res)=>{
    // first check if the params is valid by the middlware validate
    // if the request is validate 'next()'
    // check the chashed folder for existing photo
-
-  res.status (500).end();
 });
 
 
