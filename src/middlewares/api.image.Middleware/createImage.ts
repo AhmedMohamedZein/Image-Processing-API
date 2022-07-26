@@ -1,19 +1,12 @@
 import express from 'express';
-import sharp from 'sharp';
 import { promises as fsPromises } from 'fs';
 import path from 'path';
+import resizeImage from '../../utilize/sharp';
 
 const fullLocation = path.join (__dirname , '../../../full/')  ;
 const thumbLocation = path.join (__dirname ,'../../../thumb/' ) ;
 
-async function createImage (requiredImage : string , width : number , height : number) : Promise<void>{
-    
-    await sharp (`${fullLocation}\\${requiredImage}`).resize( width , height ,{
-        fit : 'contain'
-        }).toFile(`${thumbLocation}\\${requiredImage}`);  
-}
-
-export default async function (req : express.Request , res : express.Response , next : express.NextFunction) {
+export default async function (req : express.Request , res : express.Response) {
     // if the request entred this middleware this means it's not in the thumv folder 
     // so we need to find if the photo exists in the full folder and if yes resize it for the given width and height
     // then we save it in the thumb folder 
@@ -33,12 +26,12 @@ export default async function (req : express.Request , res : express.Response , 
         }
         // if the Image exists please resize it and chached in the thumb folder
         else {
-            await createImage (requiredImage , res.locals.width , res.locals.height ) ;
+            await resizeImage (requiredImage , res.locals.width , res.locals.height ) ;
             res.status(200).sendFile(`${requiredImage}` , { root : thumbLocation });  
             return;
         }
     }catch (error) {
-        console.log (error);
-        return;
+        res.status (500).send('server error').end();
+        throw error ;
     }
 }

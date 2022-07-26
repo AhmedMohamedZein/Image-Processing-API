@@ -1,6 +1,6 @@
 import express from 'express';
 import { promises as fsPromises } from 'fs';
-import sharp from 'sharp';
+import { getImageWidthAndHeight } from '../../utilize/sharp';
 import path from 'path';
 
 export default async function isExist (req : express.Request , res : express.Response, next : express.NextFunction){
@@ -19,15 +19,14 @@ export default async function isExist (req : express.Request , res : express.Res
             const nameOfTheImage = arrayOfExistsImagesCached[i].slice(0,-4)  ;
             if ( nameOfTheImage != res.locals.name ) continue;
             
-            const imageWidthHeight =  await sharp (`${thumbLocation}\\${arrayOfExistsImagesCached[i]}`).metadata();
-            if ( imageWidthHeight.height != res.locals.height) continue;
-            if ( imageWidthHeight.width != res.locals.width) continue;
+            const imageMetaData =  await getImageWidthAndHeight (arrayOfExistsImagesCached[i]) ;
+            if ( imageMetaData.height != res.locals.height) continue;
+            if ( imageMetaData.width != res.locals.width) continue;
             
             requiredImage = arrayOfExistsImagesCached[i] ;
         }
         if ( !requiredImage ) {
             // here we go to the next() middleware to create the image
-            console.log ( requiredImage + "  it does not went else  ") ;
             next();
         }else {
             res.status(200).sendFile( `${requiredImage}` ,{ root : thumbLocation } ) ;
@@ -35,6 +34,6 @@ export default async function isExist (req : express.Request , res : express.Res
         }
     } catch (error) {
         res.status (500).send('server error').end();
-        return;
+        throw error ;
     }
 }
