@@ -11,14 +11,18 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
   2. `npm run build` :
 
          will only build the production file .js 
-
-  3. `npm run server` :   
-
-         will run the server using nodemon at port 8000 unless you have a .env file 
+         
+  3. `npm run start`  :
   
-  4. `node build/server.js` :
+         will build the production file then start the server with node.js
   
-         will run the production files
+  4. `npm run server` :   
+
+         will run the server using nodemon .ts file at port 8000 unless you have a .env file 
+  
+  5. `node build/server.js` :
+  
+         will run the production file
          
 ## Api documentation
 
