@@ -1,6 +1,7 @@
 import server  from '../server';
 import supertest from 'supertest';
-//import validate from '../middlewares/api.image.Middleware/validate';
+import resizeImage from '../utilize/sharp';
+import { cache } from 'sharp';
 
 
 const response = supertest ( server ) ;
@@ -76,6 +77,18 @@ describe('these tests are focused at the validate middleware a failure tests at 
         expect( responseObject.status ).toEqual (400);
     });
 
+});
+
+describe('these tests are focused at the utilize/sharp file ', () => {
+    const testImageNameFailer = 'fjod' ;
+    const testImageNamePass = 'fjord.jpg' ;
+    const testImageWidth = 1500 ;
+    const testImageHeight = 1500 ;
+    it ('1.1 The resizeImage function, not.toThrow ',async ()=>{
+        expect( async () => {
+           await resizeImage (testImageNamePass , testImageWidth , testImageHeight );
+        }).not.toThrow();
+    });
 });
 
 describe('these tests are focused at the createImage middleware at /api/image?' , ()=>{

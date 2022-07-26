@@ -1,6 +1,6 @@
 import express from 'express';
 import { promises as fsPromises } from 'fs';
-import { getImageWidthAndHeight } from '../../utilize/sharp';
+import { getImageMetaData } from '../../utilize/sharp';
 import path from 'path';
 
 export default async function isExist (req : express.Request , res : express.Response, next : express.NextFunction){
@@ -19,7 +19,7 @@ export default async function isExist (req : express.Request , res : express.Res
             const nameOfTheImage = arrayOfExistsImagesCached[i].slice(0,-4)  ;
             if ( nameOfTheImage != res.locals.name ) continue;
             
-            const imageMetaData =  await getImageWidthAndHeight (arrayOfExistsImagesCached[i]) ;
+            const imageMetaData =  await getImageMetaData (arrayOfExistsImagesCached[i]) ;
             if ( imageMetaData.height != res.locals.height) continue;
             if ( imageMetaData.width != res.locals.width) continue;
             

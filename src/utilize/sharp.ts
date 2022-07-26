@@ -12,11 +12,11 @@ export default async function resizeImage( requiredImage : string , width : numb
         }).toFile(saveLocation);  
     }
     catch (error) {
-        throw error ;
+        throw error;
     }
 }
 
-export async function getImageWidthAndHeight (imageName : string) {
+export async function getImageMetaData (imageName : string) : Promise<sharp.Metadata> {
 
     try {
         const imageMetaData = await sharp (`${thumbLocation}\\${imageName}`).metadata();
