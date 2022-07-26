@@ -4,6 +4,7 @@
   "description": "First project",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node ./build/server.js",
     "test": "npm run build && npm run jasmine",
     "jasmine": "jasmine",
     "build": "rm -rf ./build/ && npx tsc",

@@ -6,8 +6,7 @@ const thumbLocation = path.join (__dirname ,'../../thumb' ) ;
 export default async function resizeImage( requiredImage : string , width : number , height : number) : Promise<void>{
     const imageLocation = path.join (fullLocation ,requiredImage );
     const saveLocation = path.join (thumbLocation , requiredImage);
-    console.log (imageLocation , " + " , saveLocation)
-   try {
+    try {
         await sharp (imageLocation).resize( width , height ,{
         fit : 'contain'
         }).toFile(saveLocation);  
@@ -15,7 +14,6 @@ export default async function resizeImage( requiredImage : string , width : numb
     catch (error) {
         throw error ;
     }
-
 }
 
 export async function getImageWidthAndHeight (imageName : string) {

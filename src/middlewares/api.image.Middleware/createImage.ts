@@ -23,6 +23,7 @@ export default async function (req : express.Request , res : express.Response) {
         // does not exist ? res with resource was not found 
         if (! requiredImage ) { 
             res.status (404).send('This Image does not exists').end();
+            return;
         }
         // if the Image exists please resize it and chached in the thumb folder
         else {
@@ -32,6 +33,6 @@ export default async function (req : express.Request , res : express.Response) {
         }
     }catch (error) {
         res.status (500).send('server error').end();
-        throw error ;
+        return ;
     }
 }

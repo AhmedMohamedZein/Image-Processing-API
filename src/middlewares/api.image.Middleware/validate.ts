@@ -5,15 +5,15 @@ export default function validate (req : express.Request , res : express.Response
 
     if ( !req.query.name  ) {
         res.status(400).send('Query prams { name } is empty').end() ;
-        throw new Error ('Query prams { name } is empty');
+        return;
     }
     if ( !req.query.width  || !Number (req.query.width) ){
         res.status(400).send('Query prams { width } is empty or its not a number').end() ;
-        throw new Error ('Query prams { width } is empty or its not a number'); 
+        return ;
     }
     if ( !req.query.height || !Number (req.query.height)){
         res.status(400).send('Query prams { height } is empty or its not a number').end() ;
-        throw new Error ('Query prams { height } is empty or its not a number'); 
+        return;
     }
     // we will access this object directly in the others middlewares 
     res.locals.width = Number (req.query.width) ;

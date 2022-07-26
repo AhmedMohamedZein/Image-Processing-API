@@ -34,6 +34,6 @@ export default async function isExist (req : express.Request , res : express.Res
         }
     } catch (error) {
         res.status (500).send('server error').end();
-        throw error ;
+        return;
     }
 }
