@@ -1,8 +1,7 @@
 import server  from '../server';
 import supertest from 'supertest';
 import resizeImage from '../utilize/sharp';
-import { cache } from 'sharp';
-
+import { getImageMetaData } from '../utilize/sharp';
 
 const response = supertest ( server ) ;
 
@@ -80,18 +79,22 @@ describe('these tests are focused at the validate middleware a failure tests at 
 });
 
 describe('these tests are focused at the utilize/sharp file ', () => {
-    const testImageNameFailer = 'fjod' ;
-    const testImageNamePass = 'fjord.jpg' ;
+    const testImageNameFailure = 'fjod' ;
     const testImageWidth = 1500 ;
     const testImageHeight = 1500 ;
-    it ('1.1 The resizeImage function, not.toThrow ',async ()=>{
-        expect( async () => {
-           await resizeImage (testImageNamePass , testImageWidth , testImageHeight );
-        }).not.toThrow();
+    it ('1.1 The resizeImage function,Wrong image name .toBeRejected ',async ()=>{
+    
+        await expectAsync( resizeImage (testImageNameFailure , testImageWidth , testImageHeight )  ).toBeRejected();
+    
+    });
+    it ('1.2 The getImageMetaData function,Wrong image name .toBeRejected ',async ()=>{
+    
+        await expectAsync( getImageMetaData (   testImageNameFailure )  ).toBeRejected();
+    
     });
 });
 
-describe('these tests are focused at the createImage middleware at /api/image?' , ()=>{
+describe('these tests are focused at the createImage middleware at the middleware/api.image.Middleware/createImage.ts ' , ()=>{
 
     const queriesSchema = {  
         AllCorrect : '?name=encenadaport&width=407&height=365',
