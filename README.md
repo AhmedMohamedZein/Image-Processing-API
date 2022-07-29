@@ -40,7 +40,7 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
 ##  Documentation
  
 
-| End-point                     | Method        | Response   
+| End-point                     | Method        | Responses   
 | ----------------------------- | ------------- | --------    |
 | `/`                           | GET           | `status 200` with a message ('The root of this server nothing will be returned')|
 | `/api/image`                  | GET           | `status 200` if the image exists in the chached folder or in the './full' folder with the resized image. <br /> `status 404` if the image does not exists in the './full' folder. <br /> `status 500` if there is an server error.|
