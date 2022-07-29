@@ -2,47 +2,61 @@
 
 __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](https://www.linkedin.com/in/ahmedmohamedzein/)
 
+
+## Overview
+ 
+- This project was made for an education purpose, we can say that this project is a tool for manipulating images that you as a front-end need to styles the   application   interface.
+
+- Let's say that you want to use one image more than once but with different sizes (Width , height).
+
+- These requirements passed as `Query prams` in the url
+
+- So, this servies takes the image name, required width and height then returnes the image with the required parameters.
+
+- The images that you need to build the application interface should be placed in the './full' folder.
+
+- There is a chached file called './thumb' that chaches the resized image for future use, without needing to resize it agin and agin.
+
 ## Scripts
 
  1. `npm run test` : 
 
-         Will build the production file .js then test it using jasnime    
+         Will compile the typescript into javascript 'build the production file .js' then test it using jasnime    
 
-  2. `npm run build` :
+  2. `npm run server` :   
 
-         will only build the production file .js 
+         Will run the server using nodemon .ts file at port 8000 unless you have a .env file 
          
   3. `npm run start`  :
   
          will build the production file then start the server with node.js
-  
-  4. `npm run server` :   
+   
+  4. `npm run build` :
 
-         will run the server using nodemon .ts file at port 8000 unless you have a .env file 
-  
-  5. `node build/server.js` :
-  
-         will run the production file
+         Will compile the typescript into javascript 'build the production file .js', without running anything.
+      
          
-## Api documentation
-
-####     1. `/` : 
-    
-#####           root endpoint will return status `200` with a text that say `The root of this server nothing will be returned`
-        
-####     2. `api/image?name=IMAGE_NAME&width=IMAGE_WIDTH&height=IMAGE_HEIGHT` :
-          
-#####           api/image endpoint that takes queries prams `name`, `width` and `height`   
-
-                 1. name is a string value 
-                 2. width is a intger value
-                 3. height is a intger value 
-                 
-         example : 
          
-             http://localhost:8000/api/image?name=encenadaport&width=407&height=365
-             
-                > encenadaport : is a image name from the full folder 
-                > @return : should be a status 200 with the image of width 407 and height of 365
-              
+##  Documentation
+ 
+
+| End-point                     | Method        | Response   
+| ----------------------------- | ------------- | --------    |
+| `/`                           | GET           | `status 200` with a message ('The root of this server nothing will be returned')|
+| `/api/image`                  | GET           | `status 200` if the image exists in the chached folder or in the './full' folder with the resized image. <br /> `status 404` if the image does not exists in the './full' folder. <br /> `status 500` if there is an server error.|
+                                                    
+   ### Example 
+      
+      http://localhost:8000/api/image?name=IMAGE_NAME&width=IMAGE_WIDTH&height=IMAGE_HEIGHT
+
+
+##  Testing using jasmine
+
+- The `/api/image` was tested with 17 different test cases using unit test.
+ 
+- The file that contains the tests is `./src/test/` and for resize images end point `./src/test/imageSpec.ts`.
+
+- The `/api/image` was tested for non-valid queries, non-existing images, check chaching in the `./thumb` folder and the status codes.
+
+
 
