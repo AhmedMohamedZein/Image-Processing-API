@@ -19,21 +19,21 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
 
 ## Scripts
 
- 1. `npm run test` : 
+ 1.  `npm run test` : 
 
-         Will compile the typescript into javascript 'build the production file .js' then test it using jasnime    
+        Will compile the typescript into javascript 'build the production file .js' then test it using jasnime    
 
   2. `npm run server` :   
 
-         Will run the server using nodemon .ts file at port 8000 unless you have a .env file 
+        Will run the server using nodemon .ts file at port 8000 unless you have a .env file 
          
-  3. `npm run start`  :
+  3. `npm run star`  :
   
-         will build the production file then start the server with node.js
+        Will build the production file then start the server with node.js
    
   4. `npm run build` :
-
-         Will compile the typescript into javascript 'build the production file .js', without running anything.
+        
+        Will compile the typescript into javascript 'build the production file .js', without running anything.
       
          
          
@@ -47,7 +47,7 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
                                                     
    ### Example 
       
-      http://localhost:8000/api/image?name=IMAGE_NAME&width=IMAGE_WIDTH&height=IMAGE_HEIGHT
+      http://localhost:8000/api/image?name=fjord&width=1500&height=1000
 
 
 ##  Testing using jasmine
