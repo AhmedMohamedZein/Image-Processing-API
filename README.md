@@ -56,7 +56,7 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
  
 - The file that contains the tests is `./src/test/` and for resize images end point `./src/test/imageSpec.ts`.
 
-- The `/api/image` was tested for non-valid queries, non-existing images, check chaching in the `./thumb` folder and the status codes.
+- The `/api/image` was tested for non-valid queries, non-existing images, check caching in the `./thumb` folder and the status codes.
 
 
 
