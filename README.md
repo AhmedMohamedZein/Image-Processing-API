@@ -15,7 +15,7 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
 
 - The images that you need to build the application interface should be placed in the './full' folder.
 
-- There is a chached file called './thumb' that chaches the resized image for future use, without needing to resize it agin and agin.
+- There is a chached file called './thumb' that caches the resized image for future use, without needing to resize it agin and agin.
 
 ## Scripts
 
