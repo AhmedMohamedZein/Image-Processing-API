@@ -27,7 +27,7 @@ __Follow__ my [Twitter](https://twitter.com/ahmedzain503)         [Linkedin](htt
 
         Will run the server using nodemon .ts file at port 8000 unless you have a .env file 
          
-  3. `npm run star`  :
+  3. `npm run start`  :
   
         Will build the production file then start the server with node.js
    
